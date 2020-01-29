@@ -1,9 +1,18 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Twitoff - {{title}}</title>
+        <!-- html comment lines suck-->
+        <!-- keywords and metadata go here-->
     </head>
     <body>
-        <h1>Content goes here! </h1>
-        
+        <h1>Twitoff! </h1>
+        <p> This is where you say cool stuff.</p>
+
+        <ul>
+            {% for user in users %}
+            <li>{{user.id}} - {{user.name}}</li>
+            {% end for %}
+        </ul>
     </body>
 </html>
