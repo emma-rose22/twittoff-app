@@ -8,9 +8,9 @@ class User(DB.Model):
     newest_tweet_id = DB.Column(DB.BigInteger)
 
     def __repr__(self):
-        return '<Name {}>'.format(self.name)
+        return '<User {}>'.format(self.name)
 class Tweet(DB.Model):
-    id = DB.Column(DB.Integer, primary_key=True)
+    id = DB.Column(DB.BigInteger, primary_key=True)
     text = DB.Column(DB.Unicode(500), nullable=False)
     embedding = DB.Column(DB.PickleType, nullable=False)
     user_id = DB.Column(DB.BigInteger, DB.ForeignKey('user.id'), nullable=False)
