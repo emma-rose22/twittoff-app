@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="user-info">
+        <h1>User: {{ title }}</h1>
+        <p>{{ message }}</p>
+        {% for tweet in tweets %}
+            <li>{{ tweet.id }} -- {{ tweet.text }}</li>
+        {% endfor %}
+    </div>
+{% endblock %}

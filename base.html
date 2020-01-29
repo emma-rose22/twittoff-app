@@ -4,15 +4,78 @@
         <title>Twitoff - {{title}}</title>
         <!-- html comment lines suck-->
         <!-- keywords and metadata go here-->
+
     </head>
     <body>
         <h1>Twitoff! </h1>
+        <p>Select two Twitter users.</p>
+        <select action = "/user/<name>", method="get"> 
+            <option type="text", name="username", placeholder="Pick a User">elonmusk</option>
+            <option type="text", name="username", placeholder="Pick a User">tylerrjoseph</option>
+        </select>
+        <select action = "/user/<name>", method="get"> 
+            <option type="text", name="username", placeholder="Pick a User">elonmusk</option>
+            <option type="text", name="username", placeholder="Pick a User">tylerrjoseph</option>
+        </select>
+
+        {%block content%}
+        <h3>Want to add a Twitter user to the database? </h3>
+        <form action="/user" method ="post">
+        <input type="text" name="username", placeholder="Add User Here">
+        <input type="submit", value="Add User">
+        </form>
+        {%endblock%}
         <p> This is where you say cool stuff.</p>
 
-        <ul>
-            {% for user in users %}
-            <li>{{user.id}} - {{user.name}}</li>
-            {% end for %}
-        </ul>
+    <head>
+    <style>
+
+    .dropbtn {
+        background-color:black;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: lightgrey;
+        min-width: 200px;
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {background-color: white;}
+    .dropdown:hover .dropdown-content {display: block;}
+    .dropdown:hover .dropbtn {background-color: grey;}
+
+    </style>
+    </head>
+
+    <div class="dropdown">
+    <button class="dropbtn">Pick a Twitter User</button>
+    <div class="dropdown-content">
+
+    <a href="https://www.google.com">Google</a>
+    <a href="https://www.facebook.com">Facebook</a>
+    <a href="https://www.youtube.com">YouTube</a>
+
+    </div>
+    </div>
+    </body>
+    </html>
     </body>
 </html>
