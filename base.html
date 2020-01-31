@@ -4,32 +4,55 @@
         <title>Twitoff - {{title}}</title>
         <!-- html comment lines suck-->
         <!-- keywords and metadata go here-->
+        <link rel="stylesheet" href="https://unpkg.com/picnic">
+    </head>    
 
-    </head>
     <body>
-        <h1>Twitoff! </h1>
-        <p>Select two Twitter users.</p>
-        <select action = "/user/<name>", method="get"> 
-            <option type="text", name="username", placeholder="Pick a User">elonmusk</option>
-            <option type="text", name="username", placeholder="Pick a User">tylerrjoseph</option>
-        </select>
-        <select action = "/user/<name>", method="get"> 
-            <option type="text", name="username", placeholder="Pick a User">elonmusk</option>
-            <option type="text", name="username", placeholder="Pick a User">tylerrjoseph</option>
-        </select>
+        <nav>
+            <a href="/" class="brand"><span>TwitOff!</span></a>
+        
+        <div class = "menu">
+            <a href="/update" class="button warning"> Update Tweets</a>
+        </div>
+        </nav>
 
-        {%block content%}
-        <h3>Want to add a Twitter user to the database? </h3>
-        <form action="/user" method ="post">
-        <input type="text" name="username", placeholder="Add User Here">
-        <input type="submit", value="Add User">
+        <article class="flex two" style="padding: 3em 1em;">
+        {% block content %}
+        <div>
+        <h3>Select two Twitter users to compare:</h3>
+        <form action="/compare" method="post">
+            <select name = "user1"> 
+                {% for user in users %}
+                <option value="{{ user.name }}">{{ user.name }}</option>
+                {% endfor %}
+            </select>
+            <select name = "user2"> 
+                {% for user in users %}
+                <option value="{{ user.name }}">{{ user.name }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" name = "tweet_text" placeholder = "Put your sample tweet here">
+            <input type="submit" value = "Compare these accounts">
         </form>
+        </div>
+        <div>
+            <h3>Want to add a Twitter user to the database? </h3>
+            {% for user in users%}
+            <a href = "/user/{{user.name}}"><span class ="stack">{{ user.name  }}</span></a>
+            {% endfor %}
+            <form action="/user" method ="post">
+                <input type="text" name="username", placeholder="Add User Here">
+                <input type="submit", value="Add User">
+            </form>
+        </div>
         {%endblock%}
-        <p> This is where you say cool stuff.</p>
+        <p> What do you think? Was it funny, kinda sad, did it even work?<br>
+        Let me know! Text me if you are my friend, if we aren't that tight yet, check out these links.</p>
 
     <head>
     <style>
-
+        <p> What do you think? Was it funny, kinda sad, did it even work?<br>
+        Let me know! Text me if you are my friend, if we aren't that tight yet, check out these links.</p>
     .dropbtn {
         background-color:black;
         color: white;
@@ -66,12 +89,12 @@
     </head>
 
     <div class="dropdown">
-    <button class="dropbtn">Pick a Twitter User</button>
+    <button class="dropbtn">Tell me what you think</button>
     <div class="dropdown-content">
 
-    <a href="https://www.google.com">Google</a>
-    <a href="https://www.facebook.com">Facebook</a>
-    <a href="https://www.youtube.com">YouTube</a>
+    <a href="https://twitter.com/Emma_ranforest">Twitter</a>
+    <a href="mailto: roseemma324@gmail.com">Email me</a>
+    <a href="https://www.youtube.com">Surprise</a>
 
     </div>
     </div>
