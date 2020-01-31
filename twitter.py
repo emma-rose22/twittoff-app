@@ -32,11 +32,16 @@ def add_or_update_user(name):
         for tweet in tweets:
             embedding = BASILICA.embed_sentence(tweet.text, model='twitter')
             db_tweet = Tweet(id=tweet.id, text=tweet.text[:500], embedding=embedding)
-            DB.session.add(db_tweet)
             db_user.tweets.append(db_tweet)
+            DB.session.add(db_tweet)
     except Exception as e:
         print(f'Encountered error while processing {name}: {e}')
         raise e
     else:
         DB.session.commit()
 
+
+def update_all_users():
+    """Update all the tweets for all the users in our database"""
+    for user in User.query.all():
+        add_or_update_user(user.name)
